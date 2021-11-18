@@ -99,11 +99,11 @@ contract abhaytoken is IERC20{
     
     //tranascting from the owner account to the beneficiaray account 
     function transferFrom(address _from, address _to , uint _value) public override returns(bool success){
-        uint allowance=allowed[_from][msg.sender]; 
+        uint allowances=allowed[_from][msg.sender]; 
         
         // checking the owner have this much tokens or not 
         // check the spender have permisssion to spend this much tokens or not
-        require(allowance>= _value && balances[_from]>=_value);
+        require(allowances>= _value && balances[_from]>=_value);
         
             balances[_to]+=_value;                  //adding tokens to the beneficiaray
             balances[_from]-=_value;                //subtractiing from the owner account
